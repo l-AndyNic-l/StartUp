@@ -4,11 +4,16 @@ Todos los cambios notables de este proyecto serán documentados en este archivo.
 
 ---
 
+## [v0.5.3] - 17-04-2026
+
+### Added
+- Se añadieron las nuevas funciones a la capa "TrabajadorController".
+
 ## [v0.5.2] - 17-04-2026
 
 ### Added
 - Se añadieron las consultas personalizadas a la base de datos en la capa "TrabajadorRepository".
-- Se añadieron las funciones que manejan las nuevas consultas en la capa "Trabajador Service"
+- Se añadieron las funciones que manejan las nuevas consultas en la capa "Trabajador Service".
 
 ## [v0.4.2] - 17-04-2026
 ### Added

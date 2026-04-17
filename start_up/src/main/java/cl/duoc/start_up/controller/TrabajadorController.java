@@ -49,4 +49,37 @@ public class TrabajadorController {
         trabajadorService.delete(trabajadorTemp.getId());
         return ResponseEntity.noContent().build(); //204
     }
+
+    public TrabajadorDTO buscarTrabajadorEmail ( String e ) {
+        return trabajadorService.findByEmail( e );
+    }
+
+    public List<TrabajadorDTO> listarTrabajadoresEspecialidad ( String e ) {
+        return trabajadorService.findAllByEspecialidad( e );
+    }
+
+    public List<TrabajadorDTO> listarTrabajadoresDepartamento ( String cod ) {
+        return trabajadorService.findAllByDepartamento_Codigo( cod );
+    }
+
+    public List<TrabajadorDTO> listarTrabajadoresSueldoMayor ( int sld ) {
+        return trabajadorService.findSueldoMayor( sld );
+    }
+
+    public List<TrabajadorDTO> listarTrabajadoresSueldoMenor ( int sld ) {
+        return trabajadorService.findSueldoMenor( sld );
+    }
+
+    public List<TrabajadorDTO> listarTrabajadoresSueldoEntre ( int sld_a, int sld_b ) {
+        return trabajadorService.findSueldoEntre( sld_a, sld_b );
+    }
+
+    public List<TrabajadorDTO> listarTrabajadoresExperiencia ( int e ) {
+        return trabajadorService.findAllExperiencia( e );
+    }
+
+    public int sueldoTotalDepartamento ( String cod ) {
+        return trabajadorService.findSueldoDepartamento( cod );
+    }
+
 }
