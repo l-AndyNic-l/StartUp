@@ -4,6 +4,17 @@ Todos los cambios notables de este proyecto serán documentados en este archivo.
 
 ---
 
+## [v0.3.0] - 16-04-2026
+
+### Added
+- Se añadieron los datos en la clase "Trabajador".
+- Se añadieron las reglas de negocio en la clase "Trabajador".
+- Se añadio el nombre del proyecto en el documento poperties.
+- Se añadio el nombre de la base de datos en el documento properties.
+
+### Changed
+- Se definió la clase "Trabajador" en el modelo del proyecto.
+
 ## [v0.2.0] - 16-04-2026
 
 ### Added
