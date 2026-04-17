@@ -3,6 +3,11 @@
 Todos los cambios notables de este proyecto serán documentados en este archivo.
 
 ---
+## [v0.4.2] - 17-04-2026
+### Added
+- Se añadió endpoint (DeleteMapping) al controlador "DepartamentoController".
+- Se añadieron endpoints estandares al controlador "TrabajadorController".
+
 ## [v0.4.1] - 17-04-2026
 ### Changed
 - Se redefinieron las validaciones de la tabla "Departamento" en el modelo del proyecto.

@@ -47,4 +47,14 @@ public class DepartamentoController {
         dExistente.setNombre(d.getNombre());
         return ResponseEntity.ok(departamentoService.save(dExistente)); //200
     }
+
+    @DeleteMapping("/{codigo}")
+    public ResponseEntity<?> eliminarDepartamento(@PathVariable String codigo) {
+        Optional<Departamento> departamentoOpt = departamentoService.findById(codigo);
+        if (departamentoOpt.isEmpty()) {
+            return ResponseEntity.notFound().build(); //404
+        }
+        departamentoService.delete(departamentoOpt.get().getCodigo());
+        return ResponseEntity.noContent().build(); //204
+    }
 }
