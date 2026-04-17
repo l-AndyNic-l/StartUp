@@ -26,14 +26,14 @@ public class TrabajadorService {
         List<TrabajadorDTO> lista = new ArrayList<>();
 
         for( Trabajador t : trabajadores ) {
-            lista.add( conversion( t ) );
+            lista.add( conversionDTO( t ) );
         }
         return lista;
     }
 
     public TrabajadorDTO findOne ( Long id ) {
         Trabajador t = trabajadorRepository.findById( id ).orElse( null );
-        return conversion( t );
+        return conversionDTO( t );
     }
 
     public Trabajador save ( Trabajador t ) {
@@ -52,7 +52,7 @@ public class TrabajadorService {
         trabajadorRepository.deleteById( id );
     }
 
-    public TrabajadorDTO conversion ( Trabajador t ) {
+    public TrabajadorDTO conversionDTO ( Trabajador t ) {
         TrabajadorDTO t_dto = new TrabajadorDTO();
         LocalDate fechaActual = LocalDate.now();
         double anios = ChronoUnit.MONTHS.between( t.getFechaContrato(), fechaActual ) / 12;
@@ -71,6 +71,75 @@ public class TrabajadorService {
         t_dto.setNombreDepartamento( t.getDepartamento().getNombre() );
 
         return t_dto;
+    }
+
+    public TrabajadorDTO findByEmail ( String e ) {
+        Trabajador t = trabajadorRepository.findByEmail( e );
+        return conversionDTO( t );
+    }
+
+    public List<TrabajadorDTO> findAllByEspecialidad ( String e ) {
+        List<Trabajador> trabajadores = trabajadorRepository.findAllByEspecialidad( e );
+        List<TrabajadorDTO> lista = new ArrayList<>();
+
+        for( Trabajador t : trabajadores ) {
+            lista.add( conversionDTO( t ) );
+        }
+        return lista;
+    }
+
+    public List<TrabajadorDTO> findAllByDepartamento_Codigo ( String cod ) {
+        List<Trabajador> trabajadores = trabajadorRepository.findAllByDepartamento_Codigo( cod );
+        List<TrabajadorDTO> lista = new ArrayList<>();
+
+        for( Trabajador t : trabajadores ) {
+            lista.add( conversionDTO( t ) );
+        }
+        return lista;
+    }
+
+    public List<TrabajadorDTO> findSueldoMayor ( int sld ) {
+        List<Trabajador> trabajadores = trabajadorRepository.findSueldoMayor( sld );
+        List<TrabajadorDTO> lista = new ArrayList<>();
+
+        for( Trabajador t : trabajadores ) {
+            lista.add( conversionDTO( t ) );
+        }
+        return lista;
+    }
+
+    public List<TrabajadorDTO> findSueldoMenor ( int sld ) {
+        List<Trabajador> trabajadores = trabajadorRepository.findSueldoMenor( sld );
+        List<TrabajadorDTO> lista = new ArrayList<>();
+
+        for( Trabajador t : trabajadores ) {
+            lista.add( conversionDTO( t ) );
+        }
+        return lista;
+    }
+
+    public List<TrabajadorDTO> findSueldoEntre ( int sld_a, int sld_b ) {
+        List<Trabajador> trabajadores = trabajadorRepository.findSueldoEntre( sld_a, sld_b );
+        List<TrabajadorDTO> lista = new ArrayList<>();
+
+        for( Trabajador t : trabajadores ) {
+            lista.add( conversionDTO( t ) );
+        }
+        return lista;
+    }
+
+    public List<TrabajadorDTO> findAllExperiencia ( int e ) {
+        List<Trabajador> trabajadores = trabajadorRepository.findAllExperiencia( e );
+        List<TrabajadorDTO> lista = new ArrayList<>();
+
+        for( Trabajador t : trabajadores ) {
+            lista.add( conversionDTO( t ) );
+        }
+        return lista;
+    }
+
+    public int findSueldoDepartamento ( String cod ) {
+        return trabajadorRepository.findSueldoDepartamento( cod );
     }
 
 }
