@@ -4,6 +4,17 @@ Todos los cambios notables de este proyecto serán documentados en este archivo.
 
 ---
 
+## [v0.4.0] - 17-04-2026
+
+### Added
+- Se añadieron las reglas de negocio en el servicio "Trabajador".
+- Se añadieron los datos en la capa "TrabajadorDTO".
+
+### Changed
+- Se definió el repositorio "TrabajadorRepository" en el repositorio del proyecto.
+- Se definió el servicio "TrabajadorService" en el servicio del proyecto.
+- Se definió la capa  "TrabajadorDTO" en el dto del proyecto.
+
 ## [v0.3.0] - 16-04-2026
 
 ### Added
