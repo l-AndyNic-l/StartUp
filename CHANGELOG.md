@@ -3,7 +3,12 @@
 Todos los cambios notables de este proyecto serán documentados en este archivo.
 
 ---
+## [v0.5.4] - 21-04-2026
 
+### Changed
+- Se terminó de conectar completamente el controlador "TrabajadorController" con el servicio "TrabajadorService". 
+- Se corrigió la ortografía de unas variables ("suelo -> sueldo").
+ 
 ## [v0.5.3] - 17-04-2026
 
 ### Added

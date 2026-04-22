@@ -27,11 +27,11 @@ public class TrabajadorController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarTrabajador(@PathVariable Long id){
-        TrabajadorDTO t = trabajadorService.findOne(id);
-        if (t == null) {
+        TrabajadorDTO trabajadorTemp = trabajadorService.findOne(id);
+        if (trabajadorTemp == null) {
             return ResponseEntity.notFound().build(); //404
         }
-        return ResponseEntity.ok(t); //200
+        return ResponseEntity.ok(trabajadorTemp); //200
     }
 
     @PostMapping
@@ -50,36 +50,76 @@ public class TrabajadorController {
         return ResponseEntity.noContent().build(); //204
     }
 
-    public TrabajadorDTO buscarTrabajadorEmail ( String e ) {
-        return trabajadorService.findByEmail( e );
+    @GetMapping("/buscar-por-email/{e}")
+    public ResponseEntity<?> buscarTrabajadorEmail (@PathVariable String e ) {
+        TrabajadorDTO trabajadorTemp = trabajadorService.findByEmail( e );
+        if (trabajadorTemp == null) {
+            return ResponseEntity.notFound().build(); //404
+        }
+        return ResponseEntity.ok(trabajadorTemp); //200
     }
 
-    public List<TrabajadorDTO> listarTrabajadoresEspecialidad ( String e ) {
-        return trabajadorService.findAllByEspecialidad( e );
+    @GetMapping("/listar-por-especialidad/{e}")
+    public ResponseEntity<?> listarTrabajadoresEspecialidad (@PathVariable String e ) {
+        List<TrabajadorDTO> trabajadoresTemp = trabajadorService.findAllByEspecialidad( e );
+        if (trabajadoresTemp == null) {
+            return ResponseEntity.noContent().build(); //204
+        }
+        return ResponseEntity.ok(trabajadoresTemp); //200
     }
 
-    public List<TrabajadorDTO> listarTrabajadoresDepartamento ( String cod ) {
-        return trabajadorService.findAllByDepartamento_Codigo( cod );
+    @GetMapping("/listar-por-departamento/{cod}")
+    public ResponseEntity<?> listarTrabajadoresDepartamento (@PathVariable String cod ) {
+        List<TrabajadorDTO> trabajadoresTemp = trabajadorService.findAllByDepartamento_Codigo( cod );
+        if (trabajadoresTemp == null) {
+            return ResponseEntity.noContent().build(); //204
+        }
+        return ResponseEntity.ok(trabajadoresTemp); //200
     }
 
-    public List<TrabajadorDTO> listarTrabajadoresSueldoMayor ( int sld ) {
-        return trabajadorService.findSueldoMayor( sld );
+    @GetMapping("/listar-por-sueldo-mayor/{sld}")
+    public ResponseEntity<?> listarTrabajadoresSueldoMayor (@PathVariable int sld ) {
+        List<TrabajadorDTO> trabajadoresTemp = trabajadorService.findSueldoMayor( sld );
+        if (trabajadoresTemp == null) {
+            return ResponseEntity.noContent().build(); //204
+        }
+        return ResponseEntity.ok(trabajadoresTemp); //200
     }
 
-    public List<TrabajadorDTO> listarTrabajadoresSueldoMenor ( int sld ) {
-        return trabajadorService.findSueldoMenor( sld );
+    @GetMapping("/listar-por-sueldo-menor/{sld}")
+    public ResponseEntity<?> listarTrabajadoresSueldoMenor (@PathVariable int sld ) {
+        List<TrabajadorDTO> trabajadoresTemp = trabajadorService.findSueldoMenor( sld );
+        if (trabajadoresTemp == null) {
+            return ResponseEntity.noContent().build(); //204
+        }
+        return ResponseEntity.ok(trabajadoresTemp); //200
     }
 
-    public List<TrabajadorDTO> listarTrabajadoresSueldoEntre ( int sld_a, int sld_b ) {
-        return trabajadorService.findSueldoEntre( sld_a, sld_b );
+    @GetMapping("/listar-por-sueldo-entre/{sld_a/{sld_b}}")
+    public ResponseEntity<?> listarTrabajadoresSueldoEntre (@PathVariable int sld_a, @PathVariable int sld_b ) {
+        List<TrabajadorDTO> trabajadoresTemp = trabajadorService.findSueldoEntre( sld_a, sld_b );
+        if (trabajadoresTemp == null) {
+            return ResponseEntity.noContent().build(); //204
+        }
+        return ResponseEntity.ok(trabajadoresTemp); //200
     }
 
-    public List<TrabajadorDTO> listarTrabajadoresExperiencia ( int e ) {
-        return trabajadorService.findAllExperiencia( e );
+    @GetMapping("/listar-por-experiencia/{e}")
+    public ResponseEntity<?> listarTrabajadoresExperiencia (@PathVariable int e ) {
+        List<TrabajadorDTO> trabajadoresTemp = trabajadorService.findAllExperiencia( e );
+        if (trabajadoresTemp == null) {
+            return ResponseEntity.noContent().build(); //204
+        }
+        return ResponseEntity.ok(trabajadoresTemp); //200
     }
 
-    public int sueldoTotalDepartamento ( String cod ) {
-        return trabajadorService.findSueldoDepartamento( cod );
+    @GetMapping("/sueldo-total-departamento/{cod}")
+    public ResponseEntity<?> sueldoTotalDepartamento (@PathVariable String cod ) {
+        int sueldoTotalDepartamento = trabajadorService.findSueldoDepartamento( cod );
+        if (sueldoTotalDepartamento == 0) {
+            return ResponseEntity.noContent().build(); //204
+        }
+        return ResponseEntity.ok(sueldoTotalDepartamento); //200
     }
 
 }

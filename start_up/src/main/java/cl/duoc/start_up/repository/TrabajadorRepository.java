@@ -15,13 +15,13 @@ public interface TrabajadorRepository extends JpaRepository <Trabajador, Long> {
 
     List<Trabajador> findAllByDepartamento_Codigo( String departamentoCodigo );
 
-    @Query( value = "SELECT * FROM trabajador WHERE suelo > :sld", nativeQuery = true )
+    @Query( value = "SELECT * FROM trabajador WHERE sueldo > :sld", nativeQuery = true )
     List<Trabajador> findSueldoMayor( @Param( "sld" ) int sld );
 
-    @Query( value = "SELECT * FROM trabajador WHERE suelo < :sld", nativeQuery = true )
+    @Query( value = "SELECT * FROM trabajador WHERE sueldo < :sld", nativeQuery = true )
     List<Trabajador> findSueldoMenor( @Param( "sld" ) int sld );
 
-    @Query( value = "SELECT * FROM trabajador WHERE suelo BETWEEN :sld_a AND :sld_b", nativeQuery = true )
+    @Query( value = "SELECT * FROM trabajador WHERE sueldo BETWEEN :sld_a AND :sld_b", nativeQuery = true )
     List<Trabajador> findSueldoEntre( @Param( "sld_a" ) int sld_a, @Param( "sld_b" ) int sld_b );
 
     @Query( value = "SELECT * FROM trabajador WHERE TIMESTAMPDIFF(YEAR, fecha_contrato, CURDATE()) = :experiencia", nativeQuery = true )
